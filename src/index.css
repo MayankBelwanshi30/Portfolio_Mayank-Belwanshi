@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@layer components {
+  body {
+    overflow-x: hidden; /* block horizontal scroll only */
+    overflow-y: auto; /* allow vertical scroll */
+    -webkit-overflow-scrolling: touch; /* smooth mobile scroll */
+    background-color: black;
+  }
+
+  /* .scrollbar::-webkit-scrollbar {
+    width: 100%;
+    max-width: 672px;
+    /* Match max-w-2xl (42rem = 672px) */
+  /*  height: 4px;
+    margin: 0 auto;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  } */
+
+  /* In your main CSS file */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    margin-bottom: -20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+  }
+
+  .section-title {
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .project-card {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  } */
+
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+
+  @keyframes scrollVertical {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes scrollHorizontal {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll-vertical {
+    animation: scrollVertical 20s linear infinite;
+  }
+
+  .animate-scroll-horizontal {
+    animation: scrollHorizontal 25s linear infinite;
+  }
+
+  .animate-scroll-vertical:hover,
+  .animate-scroll-horizontal:hover {
+    animation-play-state: paused;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .animate-scroll-vertical > *,
+  .animate-scroll-horizontal > * {
+    transition: all 0.3s ease;
+  }
+
+  .snap-center {
+    scroll-snap-align: center;
+  }
+}
+
+/* src/index.css  — append to your existing file */
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Hide cursor on touch */
+@media (hover: none) {
+  body {
+    cursor: auto !important;
+  }
+}
+
+/* Thin styled scrollbar for the horizontal projects track */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+
