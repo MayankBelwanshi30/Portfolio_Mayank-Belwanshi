@@ -2,7 +2,7 @@
 
 ## Project Preview
 
-![Portfolio Screenshot](.public/Screenshot.png)
+![Portfolio Screenshot](./Screenshot.png)
 
 ## Description
 
