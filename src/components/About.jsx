@@ -6,6 +6,8 @@ import { FiLinkedin, FiGithub, FiInstagram, FiTwitter } from 'react-icons/fi';
 import { SiLeetcode } from 'react-icons/si';
 import { GiTrophy } from "react-icons/gi";
 import { fadeUp, stagger, slideRight } from '../animations/variants';
+import profilePic from '../assets/images/profile.jpg';  // Import at top
+
 
 const CHIPS = ['React','Next.js','TypeScript','Three.js','Node.js','PostgreSQL','Figma','AWS'];
 
@@ -100,7 +102,7 @@ export default function About() {
             margin: '0 auto'
           }}>
             <img 
-              src="./src/assets/images/pfp.jpg"
+              src={profilePic}
               alt="Profile" 
               style={{
                 width: '100%',
