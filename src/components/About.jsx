@@ -9,14 +9,14 @@ import { fadeUp, stagger, slideRight } from '../animations/variants';
 import profilePic from '../assets/images/profile.jpg';  // Import at top
 
 
-const CHIPS = ['React','Next.js','TypeScript','Three.js','Node.js','PostgreSQL','Figma','AWS'];
+const CHIPS = [  'React','Python', 'Pandas', 'Scikit-learn', 'MySQL', 'C++'];
 
 const SOCIALS = [
   { icon: FiLinkedin,  url:'https://www.linkedin.com/in/mayank-belwanshi/' },
   { icon: FiGithub,    url:'https://github.com/MayankBelwanshi30' },
   { icon: SiLeetcode,  url:'https://leetcode.com/u/Mynk_30/' },
-  { icon: FiTwitter,   url:'https://twitter.com/yourhandle' },
-  { icon: FiInstagram, url:'https://www.instagram.com/_ma.ya.nk._?igsh=MTY2cWZmZWI1ZHNtaA==' },
+  { icon: FiTwitter,   url:'https://x.com/Mayank3025' },
+  { icon: FiInstagram, url:'https://www.instagram.com/_ma.ya.nk._' },
 ];
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -54,7 +54,7 @@ export default function About() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
-  const accent = isDark ? '#9B5CFF' : '#07BEB8';
+  const accent = isDark ? '#9B5CFF' : '#007AFF';
   const textC = isDark ? '#f5f5f5' : '#0a0a0a';
   const subC = isDark ? 'rgba(245,245,245,0.45)' : 'rgba(10,10,10,0.5)';
   const borderC = isDark ? 'rgba(255,255,255,0.09)' : 'rgba(0,0,0,0.09)';
@@ -194,7 +194,7 @@ export default function About() {
             color: subC,
             fontSize: '0.95rem'
           }}>
-            Hi, I'm Mayank — a full-stack developer and creative technologist with a passion for crafting products that feel as good as they look.
+            Hi, I'm Mayank — a Final-Year Computer Science and Engineering undergraduate at NIT Bhopal, passionate about building software and using technology to solve real-world problems.
           </motion.p>
 
           <motion.p variants={fadeUp} style={{
@@ -204,7 +204,7 @@ export default function About() {
             color: subC,
             fontSize: '0.95rem'
           }}>
-            I specialize in React ecosystems, WebGL experiences, and performant front-end architecture.
+            My work spans Machine Learning, Data Analytics, and Software Development, with hands-on experience building end-to-end ML pipelines, interactive dashboards and intelligent web applications.
           </motion.p>
 
           <motion.p variants={fadeUp} style={{

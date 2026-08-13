@@ -2,14 +2,37 @@
 import { useTheme } from '../context/ThemeContext';
 
 const ITEMS = [
-  'React','Three.js','TypeScript','Node.js','Next.js',
-  'WebGL','Figma','Motion Design','GSAP','UI / UX',
+  'Python',
+  'C++',
+  'C',
+  'JavaScript',
+  'React',
+  'HTML',
+  'CSS',
+  'SQL',
+  'Pandas',
+  'NumPy',
+  'Scikit-learn',
+  'Machine Learning',
+  'Data Analytics',
+  'Tableau',
+  'Power BI',
+  'Matplotlib',
+  'Seaborn',
+  'MySQL',
+  'Neo4j',
+  'Docker',
+  'AWS',
+  'Azure',
+  'Git',
+  'GitHub',
+  'Postman',
 ];
 
 export default function Marquee() {
   const { isDark } = useTheme();
 
-  const accent = isDark ? '#9B5CFF' : '#07BEB8';
+  const accent = isDark ? '#9B5CFF' : '#007AFF';
 
   return (
     <div className="relative my-12 group">

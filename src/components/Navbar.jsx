@@ -58,11 +58,11 @@ export default function Navbar() {
   const [tooltip, setTooltip] = useState('');
 
   /* ── Accent palette ── */
-  const accent = isDark ? '#9B5CFF' : '#07BEB8';
-  const accentSoft = isDark ? 'rgba(155,92,255,0.16)' : 'rgba(7,190,184,0.14)';
+  const accent = isDark ? '#9B5CFF' : '#007AFF';
+  const accentSoft = isDark ? 'rgba(155,92,255,0.16)' : 'rgba(0, 122, 255, 0.12)';
   const accentGlow = isDark 
     ? 'rgba(155,92,255,0.24)'   // 80% of 0.30
-    : 'rgba(7,190,184,0.192)';  // 80% of 0.24
+    : 'rgba(0, 122, 255, 0.12)';  // 80% of 0.24
 
   const dimText = isDark ? 'rgba(245,245,245,0.45)' : 'rgba(10,10,10,0.48)';
   const brightText = isDark ? '#f5f5f5' : '#0a0a0a';

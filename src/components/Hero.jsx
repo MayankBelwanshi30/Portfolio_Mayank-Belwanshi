@@ -15,7 +15,7 @@ const ROLES = [
 export default function Hero() {
   const { isDark } = useTheme();
 
-  const accent  = isDark ? '#9B5CFF' : '#07BEB8';
+  const accent  = isDark ? '#9B5CFF' : '#007AFF';
   const textC   = isDark ? '#f5f5f5' : '#0a0a0a';
   const subC    = isDark ? 'rgba(245,245,245,0.45)' : 'rgba(10,10,10,0.5)';
   const borderC = isDark ? 'rgba(255,255,255,0.09)' : 'rgba(0,0,0,0.09)';
@@ -114,7 +114,7 @@ export default function Hero() {
         style={{ color: subC }}
       >
         I am a Final Year Undergrad at NIT Bhopal (CSE '27), passionate about
-        creating innovative web solutions with modern technologies.
+        creating innovative and impactful solutions through technology.
       </motion.p>
 
       {/* Buttons */}

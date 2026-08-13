@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import {
   FiGithub,
@@ -12,29 +12,21 @@ import {
 import { SiLeetcode } from "react-icons/si";
 import { fadeUp, stagger, scaleIn } from "../animations/variants";
 
-import fallbackImg from "../assets/images/desk.jpg";
-import fallbackImg2 from "../assets/images/desk1.jpg";
-import fallbackImg3 from "../assets/images/desk2.jpg";
+import Img from "../assets/images/desk1.jpg";
 
-const RESUME_URL = "#";
+const RESUME_URL = "https://drive.google.com/drive/folders/1ajl5-8hVvJYyMNIBC1OlmL0gB5z2hJ5t?usp=sharing";
 
 const SOCIALS = [
-  { Icon: FiGithub, url: "#", label: "GitHub" },
-  { Icon: FiTwitter, url: "#", label: "Twitter" },
-  { Icon: FiLinkedin, url: "#", label: "LinkedIn" },
-  { Icon: SiLeetcode, url: "#", label: "LeetCode" },
-  { Icon: FiInstagram, url: "#", label: "Instagram" },
+  { Icon: FiGithub, url: "https://github.com/MayankBelwanshi30", label: "GitHub" },
+  { Icon: FiTwitter, url: "https://x.com/Mayank3025", label: "Twitter" },
+  { Icon: FiLinkedin, url: "https://www.linkedin.com/in/mayank-belwanshi/", label: "LinkedIn" },
+  { Icon: SiLeetcode, url: "https://leetcode.com/u/Mynk_30/", label: "LeetCode" },
+  { Icon: FiInstagram, url: "https://www.instagram.com/_ma.ya.nk._", label: "Instagram" },
   { Icon: FiFileText, url: RESUME_URL, label: "Resume" },
 ];
 
-const IMAGES = [
-  { src: fallbackImg, alt: "Mayank Belwanshi - Profile 1" },
-  { src: fallbackImg2, alt: "Mayank Belwanshi - Profile 2" },
-  { src: fallbackImg3, alt: "Mayank Belwanshi - Profile 3" },
-];
-
 function SectionTag({ label, isDark }) {
-  const accent = isDark ? "#9B5CFF" : "#07BEB8";
+  const accent = isDark ? "#9B5CFF" : "#007AFF";
   return (
     <div
       style={{
@@ -73,10 +65,11 @@ function SocialBtn({ Icon, url, label, isDark, surfBg, borderC, accent }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
+      className="social-btn"
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        width: "auto",
+        width: "100%",
         height: 40,
         padding: "0 1rem",
         borderRadius: 999,
@@ -111,9 +104,8 @@ export default function Contact() {
   const { isDark } = useTheme();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const accent = isDark ? "#9B5CFF" : "#07BEB8";
+  const accent = isDark ? "#9B5CFF" : "#007AFF";
   const textC = isDark ? "#f5f5f5" : "#0a0a0a";
   const subC = isDark ? "rgba(245,245,245,0.45)" : "rgba(10,10,10,0.5)";
   const borderC = isDark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.09)";
@@ -123,17 +115,7 @@ export default function Contact() {
 
   const cardBorder = isDark
     ? "1px solid rgba(155,92,255,0.22)"
-    : "1px solid rgba(7,190,184,0.20)";
-
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % IMAGES.length);
-
-  // Auto slide every 10 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    : "1px solid rgba(0,122,255,0.20)";
 
   return (
     <section
@@ -190,29 +172,23 @@ export default function Contact() {
         }}
         className="contact-grid"
       >
-        {/* LEFT — Image Slider */}
+        {/* LEFT — Single College Photo */}
         <div
+          className="contact-photo"
           style={{ position: "relative", overflow: "hidden", minHeight: 480 }}
         >
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={currentIndex}
-              src={IMAGES[currentIndex].src}
-              alt={IMAGES[currentIndex].alt}
-              initial={{ opacity: 0, scale: 1.08 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center top",
-              }}
-            />
-          </AnimatePresence>
+          <img
+            src={Img}
+            alt="Image"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center top",
+            }}
+          />
 
           {/* Clean gradient overlay */}
           <div
@@ -225,35 +201,6 @@ export default function Contact() {
               pointerEvents: "none",
             }}
           />
-
-          {/* Dots */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: "1.2rem",
-              left: "50%",
-              transform: "translateX(-50%)",
-              zIndex: 10,
-              display: "flex",
-              gap: "0.5rem",
-            }}
-          >
-            {IMAGES.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                style={{
-                  width: idx === currentIndex ? 24 : 8,
-                  height: 8,
-                  borderRadius: 4,
-                  background:
-                    idx === currentIndex ? accent : "rgba(255,255,255,0.6)",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              />
-            ))}
-          </div>
         </div>
 
         {/* RIGHT — Contact Info */}
@@ -284,6 +231,7 @@ export default function Contact() {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <a
               href="mailto:mynkbelwanshi@gmail.com"
+              className="contact-email"
               style={{
                 display: "inline-block",
                 fontFamily: "Syne, sans-serif",
@@ -295,6 +243,10 @@ export default function Contact() {
                 paddingBottom: "0.2rem",
                 transition: "all 0.3s ease",
                 cursor: "pointer",
+                maxWidth: "100%",
+                overflowWrap: "break-word",
+                wordBreak: "break-word",
+                textAlign: "center",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderBottomColor = accent;
@@ -317,6 +269,7 @@ export default function Contact() {
               href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=mynkbelwanshi@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="contact-cta"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -332,6 +285,8 @@ export default function Contact() {
                 border: `1px solid ${borderC}`,
                 transition: "all 0.3s ease",
                 textDecoration: "none",
+                maxWidth: "100%",
+                whiteSpace: "nowrap",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = accent;
@@ -358,6 +313,7 @@ export default function Contact() {
 
           {/* Social Buttons - Text and icon turn accent on hover */}
           <div
+            className="contact-socials"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
@@ -383,6 +339,30 @@ export default function Contact() {
       <style>{`
         @media (max-width: 720px) {
           .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-photo { display: none !important; }
+          .contact-socials { grid-template-columns: 1fr 1fr !important; gap: 0.6rem !important; }
+
+          .contact-email { font-size: clamp(1rem, 5.5vw, 1.35rem) !important; }
+
+          .contact-cta {
+            font-size: 0.82rem !important;
+            padding: 0.75rem 1.4rem !important;
+          }
+
+          .social-btn {
+            padding: 0 0.6rem !important;
+            font-size: 0.72rem !important;
+            gap: 0.35rem !important;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .contact-cta {
+            font-size: 0.75rem !important;
+            padding: 0.7rem 1.1rem !important;
+            gap: 0.4rem !important;
+          }
+          .social-btn { font-size: 0.66rem !important; padding: 0 0.4rem !important; }
         }
       `}</style>
     </section>

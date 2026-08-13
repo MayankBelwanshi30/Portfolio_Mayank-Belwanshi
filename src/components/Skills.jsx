@@ -9,15 +9,15 @@ import reactImg from '../assets/images/s4.png';
 import nodeImg from '../assets/images/s5.png';
 import figmaImg from '../assets/images/s6.png';
 import dsaImg from '../assets/images/s1.png';
-import hackImg from '../assets/images/s7.png';
+import daImg from '../assets/images/s3.png';
 import aiImg from '../assets/images/s0.png';
 
 const SKILL_CARDS = [
   {
     img: reactImg,
     title: 'Frontend Development',
-    desc: 'Building modern, responsive interfaces using React, Next.js & animations.',
-    bar: 'React / Next.js',
+    desc: 'Building modern, responsive interfaces using React and modern frontend technologies.',
+    bar: 'React / JavaScript',
     pct: 95,
   },
   {
@@ -28,11 +28,11 @@ const SKILL_CARDS = [
     pct: 88,
   },
   {
-    img: figmaImg,
-    title: 'UI/UX Design',
-    desc: 'Designing clean, intuitive and visually engaging user experiences.',
-    bar: 'Figma / UX',
-    pct: 90,
+    img: aiImg,
+    title: 'Machine Learning & AI',
+    desc: 'Building practical ML solutions through data processing, modeling and evaluation.',
+    bar: 'Python / Scikit-learn',
+    pct: 88,
   },
   {
     img: dsaImg,
@@ -42,23 +42,23 @@ const SKILL_CARDS = [
     pct: 85,
   },
   {
-    img: hackImg,
-    title: 'Ethical Hacking',
-    desc: 'Understanding vulnerabilities, security & penetration testing basics.',
-    bar: 'Security',
-    pct: 75,
+    img: daImg,
+    title: 'Data Analytics',
+    desc: 'Turning raw data into actionable insights through analysis, visualization and dashboards.',
+    bar: 'Pandas / Tableau / Power BI',
+    pct: 92,
   },
   {
-    img: aiImg,
-    title: 'AI Integration',
-    desc: 'Building AI-powered apps using APIs, ML models & automation.',
-    bar: 'AI / ML',
-    pct: 82,
+     img: figmaImg,
+    title: 'UI/UX Design',
+    desc: 'Designing clean, intuitive and visually engaging user experiences.',
+    bar: 'Figma / UX',
+    pct: 90,
   },
 ];
 
 function SectionTag({ isDark, label }) {
-  const accent = isDark ? '#9B5CFF' : '#07BEB8';
+  const accent = isDark ? '#9B5CFF' : '#007AFF';
   return (
     <div style={{
       display: 'flex',
@@ -127,7 +127,7 @@ export default function Skills() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
-  const accent = isDark ? '#9B5CFF' : '#07BEB8';
+  const accent = isDark ? '#9B5CFF' : '#007AFF';
   const textC = isDark ? '#f5f5f5' : '#0a0a0a';
   const subC = isDark ? 'rgba(245,245,245,0.45)' : 'rgba(10,10,10,0.5)';
   const baseBorder = isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)';

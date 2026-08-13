@@ -26,11 +26,11 @@ export const stagger = (delay = 0.08) => ({
 export const slideRight = {
   hidden:  { opacity: 0, x: -28 },
   visible: { opacity: 1, x: 0,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+    transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export const slideLeft = {
   hidden:  { opacity: 0, x: 28 },
   visible: { opacity: 1, x: 0,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+    transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } },
 };

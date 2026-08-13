@@ -4,10 +4,10 @@ import { useTheme } from '../context/ThemeContext';
 export default function Footer() {
   const { isDark } = useTheme();
   
-  const accent = isDark ? '#9B5CFF' : '#07BEB8';
+  const accent = isDark ? '#9B5CFF' : '#007AFF';
   const accentGlow = isDark
     ? 'rgba(155,92,255,0.22)'
-    : 'rgba(7,190,184,0.18)';
+    : 'rgba(0,122,255,0.18)';
   const borderC = isDark ? 'rgba(255,255,255,0.09)' : 'rgba(0,0,0,0.09)';
   const subC = isDark ? 'rgba(245,245,245,0.45)' : 'rgba(10,10,10,0.45)';
   const textC = isDark ? '#f5f5f5' : '#0a0a0a';

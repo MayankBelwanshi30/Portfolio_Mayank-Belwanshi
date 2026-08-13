@@ -1,7 +1,5 @@
-// src/App.jsx
 import { useEffect, useRef } from 'react';
 import { useTheme } from './context/ThemeContext';
-
 import BeamsBackground from './components/BeamsBackground';
 import Navbar          from './components/Navbar';
 import Hero            from './components/Hero';
@@ -13,119 +11,77 @@ import Experience      from './components/Experience';
 import Contact         from './components/Contact';
 import Footer          from './components/Footer';
 
-/* Custom cursor */
 function Cursor() {
-  const { isDark } = useTheme(); // ✅ added
+  const { isDark } = useTheme();
   const dot  = useRef(null);
   const ring = useRef(null);
   const pos  = useRef({ cx:0, cy:0, rx:0, ry:0 });
+
+  const accent = isDark ? '#9B5CFF' : '#007AFF';
 
   useEffect(() => {
     const onMove = (e) => {
       pos.current.cx = e.clientX;
       pos.current.cy = e.clientY;
     };
-
     window.addEventListener('mousemove', onMove);
 
     let id;
     const loop = () => {
       const p = pos.current;
-
       p.rx += (p.cx - p.rx) * 0.12;
       p.ry += (p.cy - p.ry) * 0.12;
-
-      if (dot.current) {
-        dot.current.style.left = p.cx + 'px';
-        dot.current.style.top  = p.cy + 'px';
-      }
-
-      if (ring.current) {
-        ring.current.style.left = p.rx + 'px';
-        ring.current.style.top  = p.ry + 'px';
-      }
-
+      if (dot.current)  { dot.current.style.left  = p.cx + 'px'; dot.current.style.top  = p.cy + 'px'; }
+      if (ring.current) { ring.current.style.left = p.rx + 'px'; ring.current.style.top = p.ry + 'px'; }
       id = requestAnimationFrame(loop);
     };
-
     id = requestAnimationFrame(loop);
 
     const grow = () => {
-      if (dot.current) {
-        dot.current.style.width  = '18px';
-        dot.current.style.height = '18px';
-      }
-      if (ring.current) {
-        ring.current.style.width  = '52px';
-        ring.current.style.height = '52px';
-        ring.current.style.opacity = '0.18';
-      }
+      if (dot.current)  { dot.current.style.width = '18px'; dot.current.style.height = '18px'; }
+      if (ring.current) { ring.current.style.width = '52px'; ring.current.style.height = '52px'; ring.current.style.opacity = '0.18'; }
     };
-
     const shrink = () => {
-      if (dot.current) {
-        dot.current.style.width  = '10px';
-        dot.current.style.height = '10px';
-      }
-      if (ring.current) {
-        ring.current.style.width  = '34px';
-        ring.current.style.height = '34px';
-        ring.current.style.opacity = '0.3';
-      }
+      if (dot.current)  { dot.current.style.width = '10px'; dot.current.style.height = '10px'; }
+      if (ring.current) { ring.current.style.width = '34px'; ring.current.style.height = '34px'; ring.current.style.opacity = '0.3'; }
     };
 
-    const interactiveEls = document.querySelectorAll('a,button');
-
-    interactiveEls.forEach(el => {
-      el.addEventListener('mouseenter', grow);
-      el.addEventListener('mouseleave', shrink);
-    });
+    const els = document.querySelectorAll('a, button');
+    els.forEach(el => { el.addEventListener('mouseenter', grow); el.addEventListener('mouseleave', shrink); });
 
     return () => {
       cancelAnimationFrame(id);
       window.removeEventListener('mousemove', onMove);
-
-      interactiveEls.forEach(el => {
-        el.removeEventListener('mouseenter', grow);
-        el.removeEventListener('mouseleave', shrink);
-      });
+      els.forEach(el => { el.removeEventListener('mouseenter', grow); el.removeEventListener('mouseleave', shrink); });
     };
   }, []);
 
   return (
     <>
-      {/* Dot */}
       <div
         ref={dot}
         style={{
-          position: 'fixed',
-          width: 10,
-          height: 10,
-          borderRadius: '50%',
+          position: 'fixed', width: 10, height: 10,
+          borderRadius: '50%', background: accent,
+          boxShadow: `0 0 10px ${accent}99`,
           transform: 'translate(-50%,-50%)',
-          pointerEvents: 'none',
-          zIndex: 9999,
-          transition: 'width .2s,height .2s,background .3s',
+          pointerEvents: 'none', zIndex: 9999,
+          transition: 'width .2s, height .2s, background .3s, box-shadow .3s',
         }}
-        className={`hidden sm:block ${isDark ? 'bg-[#f5f5f5]' : 'bg-[#0a0a0a]'}`} // ✅ dynamic
+        className="hidden sm:block"
       />
-
-      {/* Ring */}
       <div
         ref={ring}
         style={{
-          position: 'fixed',
-          width: 34,
-          height: 34,
+          position: 'fixed', width: 34, height: 34,
           borderRadius: '50%',
-          border: '1px solid currentColor',
+          border: `1.5px solid ${accent}`,
           opacity: 0.3,
           transform: 'translate(-50%,-50%)',
-          pointerEvents: 'none',
-          zIndex: 9998,
-          transition: 'width .3s,height .3s,opacity .3s',
+          pointerEvents: 'none', zIndex: 9998,
+          transition: 'width .3s, height .3s, opacity .3s, border-color .3s',
         }}
-        className={`hidden sm:block ${isDark ? 'text-[#f5f5f5]' : 'text-[#0a0a0a]'}`} // ✅ dynamic
+        className="hidden sm:block"
       />
     </>
   );
@@ -140,16 +96,9 @@ function AppContent() {
         ${isDark ? 'bg-[#080808] text-[#f5f5f5]' : 'bg-[#f8f8f8] text-[#0a0a0a]'}`}
       style={{ cursor: 'none' }}
     >
-      {/* Background */}
       <BeamsBackground />
-
-      {/* Custom cursor */}
       <Cursor />
-
-      {/* Navbar */}
       <Navbar />
-
-      {/* Main content */}
       <main className="relative z-10">
         <Hero />
         <About />
@@ -160,8 +109,6 @@ function AppContent() {
         <Contact />
         <Footer />
       </main>
-
-      {/* Grain overlay */}
       <div
         className="fixed inset-0 pointer-events-none z-[9997] opacity-[0.013]"
         style={{
